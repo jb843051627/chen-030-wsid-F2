@@ -128,3 +128,14 @@ oss:
   access-key: minioadmin  # 上文创建的AK
   secret-key: minioadmin # 上文创建的SK
   bucket-name: v2-cloud  # 上文创建的桶名称
+# 专用标识证面版式模板册一摊
+wsid:
+  tpl:
+    # 一屏并列摆几联：只认 1..3，填 0 或填 9 视同没填，按缺省 1 落
+    style-num: 1
+    # 一屏摆几条：往下可以接续看
+    page-size: 10
+    # 两处汇来谁先谁后，取舍在册上写着以哪为准；两路同时到按先后认
+    source-order:
+      - 底册
+      - 页面
