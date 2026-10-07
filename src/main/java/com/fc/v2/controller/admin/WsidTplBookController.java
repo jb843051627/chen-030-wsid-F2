@@ -1,6 +1,5 @@
 package com.fc.v2.controller.admin;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.fc.v2.common.base.BaseController;
 import com.fc.v2.common.domain.AjaxResult;
 import com.fc.v2.common.domain.ResultTable;
@@ -44,10 +43,11 @@ public class WsidTplBookController extends BaseController {
     @RequiresPermissions("wsid:wsidTplBook:list")
     @ResponseBody
     public ResultTable list(TWsidTplBook record) {
-        QueryWrapper<TWsidTplBook> queryWrapper = new QueryWrapper<TWsidTplBook>();
+        // 检索口子与读法只认服务层那一条方法，控制层不另摆条件；一屏几条由请求配置带来
         startPage();
         com.github.pagehelper.PageInfo<TWsidTplBook> page =
-                new com.github.pagehelper.PageInfo<TWsidTplBook>(wsidTplBookService.selectTWsidTplBookList(queryWrapper));
+                new com.github.pagehelper.PageInfo<TWsidTplBook>(
+                        wsidTplBookService.searchTWsidTplBook(record, null, null));
         return pageTable(page.getList(), page.getTotal());
     }
 
